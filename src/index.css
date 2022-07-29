@@ -13,3 +13,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Roboto', monospace;
 }
+
+.slick-next {
+  right: 0 !important;
+}
+
+.slick-prev {
+  left: 0 !important;
+}
+
+.slick-next:hover,
+.slick-prev:hover {
+  color: black !important;
+}
