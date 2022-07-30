@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { NextEventType } from '../common_types/types'
 import React, { CSSProperties, useEffect, useMemo, useState } from 'react'
-import { Card, Empty, Typography, Image, Select, Col, List } from 'antd'
+import { Card, Empty, Typography, Image, Select, Carousel } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
 import '../index.css'
@@ -63,14 +63,6 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
     'Badminton - double femme',
   ])
 
-  const handlerPrevArrowClick = () => {
-    console.log('handlerPrevArrowClick')
-  }
-
-  const handlerNextArrowClick = () => {
-    console.log('handlerNextArrowClick')
-  }
-
   // Add default value on page load
   useEffect(() => {
     setSportList(dataNextEvent)
@@ -97,65 +89,64 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
 
   const filteredOptions = OPTIONS.filter((option) => !selectedSports.includes(option.value))
 
+  const settings = {
+    slidesToScroll: 3,
+    slidesToShow: 3,
+    arrows: true,
+    infinite: false,
+    dots: false,
+    prevArrow: <SamplePrevArrow />,
+    nextArrow: <SampleNextArrow />,
+  }
+
   return (
     <>
-      <Col>
-        {' '}
-        <Select
-          placeholder="Sélectionnez des sports"
-          mode="multiple"
-          value={selectedSports}
-          onChange={setSelectedSports}
-          style={{ width: '100%', marginTop: 20, marginBottom: 20 }}
-        >
-          {filteredOptions.map((sport) => {
-            const { key, value, label } = sport
-            return (
-              <Select.Option key={key} value={value} label={label} style={{ width: '100%' }}>
-                <Typography.Text>{value}</Typography.Text>
-              </Select.Option>
-            )
-          })}
-        </Select>
-      </Col>
+      <Select
+        placeholder="Sélectionnez des sports"
+        mode="multiple"
+        value={selectedSports}
+        onChange={setSelectedSports}
+        style={{ width: '100%', marginTop: 20, marginBottom: 20 }}
+      >
+        {filteredOptions.map((sport) => {
+          const { key, value, label } = sport
+          return (
+            <Select.Option key={key} value={value} label={label} style={{ width: '100%' }}>
+              <Typography.Text>{value}</Typography.Text>
+            </Select.Option>
+          )
+        })}
+      </Select>
 
-      <Typography.Title level={4}>Prochaines épreuves</Typography.Title>
+      <Typography.Title level={3}>Prochaines épreuves</Typography.Title>
       {filteredList && filteredList.length === 0 ? (
         <Empty description={`Aucune épreuve de prévu`} />
       ) : (
-        <>
-          <SamplePrevArrow className="slick-prev" onClick={handlerPrevArrowClick} />
-
-          <List
-            grid={{ gutter: 16, column: 3 }}
-            split={true}
-            dataSource={filteredList}
-            renderItem={(sport) => (
-              <List.Item>
-                <Card
-                  key={sport.id}
-                  style={{ width: 300 }}
-                  cover={
-                    <Image
-                      alt={sport.sportTitle}
-                      src={sport.pictureUrl}
-                      height={180}
-                      width="100%"
-                      style={{ objectFit: 'cover' }}
-                      preview={false}
-                    />
-                  }
-                >
-                  <Card.Meta
-                    title={sport.sportTitle}
-                    description={moment(+sport.date * 1000).format('DD/MM/YYYY - HH:mm')}
+        <Carousel {...settings}>
+          {filteredList.map((sport) => {
+            const { sportId, sportTitle, pictureUrl, date } = sport
+            return (
+              <Card
+                key={sportId}
+                cover={
+                  <Image
+                    alt={sportTitle}
+                    src={pictureUrl}
+                    height={220}
+                    width="100%"
+                    style={{ objectFit: 'cover' }}
+                    preview={false}
                   />
-                </Card>
-              </List.Item>
-            )}
-          />
-          <SampleNextArrow className="slick-next" onClick={handlerNextArrowClick} />
-        </>
+                }
+              >
+                <Card.Meta
+                  title={sportTitle}
+                  description={moment(+date * 1000).format('DD/MM/YYYY - HH:mm')}
+                />
+              </Card>
+            )
+          })}
+        </Carousel>
       )}
     </>
   )

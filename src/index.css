@@ -14,12 +14,49 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Roboto', monospace;
 }
 
+/* SLIDER */
+
+/* .ant-carousel {
+  min-width: 0 !important;
+  width: 90% !important;
+  position: relative !important;
+  margin: 0px auto !important;
+} */
+
+.slick-track {
+  overflow: hidden !important;
+}
+
+.slick-slider {
+  /* min-width: 0 !important; */
+  padding-left: 64px !important;
+  padding-right: 64px !important;
+  padding-top: 30px !important;
+  padding-bottom: 40px !important;
+}
+
+.slick-slide {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  /* margin: 10px !important; */
+  /* width: 400px !important; */
+}
+
+.slick-list {
+  overflow: hidden !important;
+}
+
 .slick-next {
   right: 0 !important;
 }
 
 .slick-prev {
   left: 0 !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  content: ' ' !important;
 }
 
 .slick-next:hover,
