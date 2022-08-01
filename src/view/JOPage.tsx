@@ -7,21 +7,17 @@ import TableMedals from '../components/TableMedals'
 
 const JOPage = () => {
   return (
-    <>
-      <Row justify="center">
-        <Col span={22}>
-          {' '}
-          <NextEvent dataNextEvent={data.nextEvent} />
-          <Divider />
-        </Col>
-      </Row>
+    <Row justify="center">
+      <Col span={18}>
+        {' '}
+        <NextEvent dataNextEvent={data.nextEvent} />
+        <Divider />
+      </Col>
 
-      <Row justify="center">
-        <Col span={22}>
-          <TableMedals medals={data.medals} />
-        </Col>
-      </Row>
-    </>
+      <Col span={18}>
+        <TableMedals medals={data.medals} />
+      </Col>
+    </Row>
   )
 }
 

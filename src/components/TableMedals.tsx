@@ -55,7 +55,11 @@ const TableMedals = ({ medals }: TableMedalsType) => {
   return (
     <>
       {' '}
-      <Typography.Title level={3} style={{ paddingTop: 20, paddingBottom: 20 }}>
+      <Typography.Title
+        level={4}
+        // style={{ paddingTop: 20, paddingBottom: 20, fontSize: 23.5 }}
+        className="medalTitle"
+      >
         Médailles
       </Typography.Title>
       <Table pagination={false} columns={columns} dataSource={newDataMedals} />
