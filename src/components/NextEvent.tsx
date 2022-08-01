@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { NextEventType } from '../common_types/types'
 import React, { useEffect, useMemo, useState } from 'react'
-import { Card, Empty, Typography, Image, Select, Row, Col, Button} from 'antd'
+import { Card, Empty, Typography, Image, Select, Row, Col, Button } from 'antd'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
 
 import '../index.css'
@@ -81,7 +81,9 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
         })}
       </Select>
 
-      <Typography.Title level={4} className={'title'}>Prochaines épreuves</Typography.Title>
+      <Typography.Title level={4} className={'title'}>
+        Prochaines épreuves
+      </Typography.Title>
       {filteredList && filteredList.length === 0 ? (
         <Empty description={`Aucune épreuve de prévu`} />
       ) : (
@@ -90,7 +92,7 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
           align="middle"
           wrap={false}
           justify="center"
-          style={{ marginTop: 30, marginBottom: 40 }}
+          style={{ marginTop: 40, marginBottom: 50 }}
         >
           <Button
             shape="circle"
