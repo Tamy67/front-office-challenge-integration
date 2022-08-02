@@ -35,7 +35,6 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
     }
     return sportList
       .filter((item) => selectedSports.includes(item.sportTitle))
-      .filter((_, idx) => idx >= index && idx < index + COUNT_SLIDES)
   }, [selectedSports, sportList, index])
 
   useEffect(() => {
@@ -108,7 +107,9 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
             className="arrows next"
             disabled={index - COUNT_SLIDES < 0}
           />
-          {filteredList.map((sport) => {
+            {filteredList
+              .filter((_, idx) => idx >= index && idx < index + COUNT_SLIDES)
+              .map((sport) => {
             const { sportId, id, sportTitle, pictureUrl, date } = sport
             return (
               <Col span={7} key={sportId}>
