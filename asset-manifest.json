@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/front-office-challenge-integration/static/css/main.483e254c.chunk.css",
+    "main.css": "/front-office-challenge-integration/static/css/main.b04a079e.chunk.css",
     "main.js": "/front-office-challenge-integration/static/js/main.6bf6e7a7.chunk.js",
     "main.js.map": "/front-office-challenge-integration/static/js/main.6bf6e7a7.chunk.js.map",
     "runtime-main.js": "/front-office-challenge-integration/static/js/runtime-main.b870e744.js",
@@ -12,14 +12,14 @@
     "static/js/3.a9e505c2.chunk.js.map": "/front-office-challenge-integration/static/js/3.a9e505c2.chunk.js.map",
     "index.html": "/front-office-challenge-integration/index.html",
     "static/css/2.c09b5ca6.chunk.css.map": "/front-office-challenge-integration/static/css/2.c09b5ca6.chunk.css.map",
-    "static/css/main.483e254c.chunk.css.map": "/front-office-challenge-integration/static/css/main.483e254c.chunk.css.map",
+    "static/css/main.b04a079e.chunk.css.map": "/front-office-challenge-integration/static/css/main.b04a079e.chunk.css.map",
     "static/js/2.9af0fd28.chunk.js.LICENSE.txt": "/front-office-challenge-integration/static/js/2.9af0fd28.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b870e744.js",
     "static/css/2.c09b5ca6.chunk.css",
     "static/js/2.9af0fd28.chunk.js",
-    "static/css/main.483e254c.chunk.css",
+    "static/css/main.b04a079e.chunk.css",
     "static/js/main.6bf6e7a7.chunk.js"
   ]
 }
