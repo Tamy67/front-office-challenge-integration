@@ -38,6 +38,11 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
       .filter((_, idx) => idx >= index && idx < index + COUNT_SLIDES)
   }, [selectedSports, sportList, index])
 
+  useEffect(() => {
+    if (filteredList.length > 0 && filteredList.length <= COUNT_SLIDES && index > 0) {
+      setIndex((i) => i - COUNT_SLIDES)
+    }
+  }, [filteredList])
   // Options for select
   const OPTIONS = sportList.map((sport) => ({
     label: sport.sportId,
@@ -47,7 +52,7 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
 
   const filteredOptions = OPTIONS.filter((option) => !selectedSports.includes(option.value))
 
-  // Carousel
+  // Control btns
   const handleRight = () => {
     if (index + COUNT_SLIDES < sportList.length) {
       setIndex(index + COUNT_SLIDES)
@@ -84,6 +89,7 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
       <Typography.Title level={4} className={'title'}>
         Prochaines épreuves
       </Typography.Title>
+
       {filteredList && filteredList.length === 0 ? (
         <Empty description={`Aucune épreuve de prévu`} />
       ) : (
@@ -132,7 +138,7 @@ const NextEvent = ({ dataNextEvent }: NextEventList) => {
             icon={<RightOutlined />}
             size="middle"
             onClick={handleRight}
-            disabled={index + COUNT_SLIDES > sportList.length}
+            disabled={index + COUNT_SLIDES >= filteredList.length}
             className="arrows prev"
           />
         </Row>
